@@ -3,7 +3,7 @@
 <p align="center">
 <a href="https://github.com/oborchers/pydantypes/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/oborchers/pydantypes/ci.yml?branch=main&logo=github&label=CI"></a>
 <a href="https://github.com/oborchers/pydantypes/blob/main/LICENSE"><img alt="license" src="https://img.shields.io/github/license/oborchers/pydantypes.svg"></a>
-<a href="https://pepy.tech/project/pydantypes"><img alt="Downloads" src="https://pepy.tech/badge/pydantypes"></a>
+<a href="https://pepy.tech/projects/pydantypes"><img src="https://static.pepy.tech/personalized-badge/pydantypes?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads" alt="PyPI Downloads"></a>
 <a href="https://docs.pydantic.dev"><img alt="Pydantic v2" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/pydantic/pydantic/main/docs/badge/v2.json"></a>
 <a href="https://github.com/astral-sh/ruff"><img alt="Ruff" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json"></a>
 <img alt="types" src="https://img.shields.io/badge/types-100%2B-blue">
