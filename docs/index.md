@@ -178,7 +178,7 @@ pydantypes is designed as a complement to [pydantic-extra-types](https://github.
 While pydantic-extra-types covers general-purpose types (colors, phone numbers, payment cards),
 pydantypes focuses on infrastructure and engineering identifiers.
 
-- Requires **Pydantic v2.0+**
+- Requires **Pydantic v2.5+**
 - Supports **Python 3.10--3.13**
 
 ## Next Steps

@@ -184,7 +184,7 @@ pydantypes is designed as a complement to [pydantic-extra-types](https://github.
 
 For **IBAN and BIC** (banking identifiers), use [schwifty](https://github.com/mdomke/schwifty) which provides native Pydantic v2 support with `__get_pydantic_core_schema__`.
 
-- Requires **Pydantic v2.0+**
+- Requires **Pydantic v2.5+**
 - Supports **Python 3.10–3.13**
 
 ## Architecture
