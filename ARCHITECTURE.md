@@ -413,3 +413,37 @@ S3Uri and GcsUri use only the unified names. BlobStorageUri exposes both unified
 ### Subclass Contract
 
 Subclasses must set `bucket` and `key` as instance attributes in `__new__`. The base class does not define `__new__` — each provider has its own regex and validation. Pydantic integration (`__get_pydantic_core_schema__`, `__get_pydantic_json_schema__`) remains on each subclass.
+
+## No-Overlap Rule
+
+pydantypes fills gaps — it never reimplements types already provided by Pydantic core or pydantic-extra-types. Before adding any new type, verify it is not covered below.
+
+### Pydantic Core (DO NOT duplicate)
+
+- **URLs**: `AnyUrl`, `AnyHttpUrl`, `HttpUrl`, `AnyWebsocketUrl`, `WebsocketUrl`, `FileUrl`, `FtpUrl`
+- **DSNs**: `PostgresDsn`, `CockroachDsn`, `MySQLDsn`, `MariaDBDsn`, `RedisDsn`, `MongoDsn`, `ClickHouseDsn`, `SnowflakeDsn`, `AmqpDsn`, `KafkaDsn`, `NatsDsn`
+- **Email**: `EmailStr`, `NameEmail`
+- **IP**: `IPvAnyAddress`, `IPvAnyInterface`, `IPvAnyNetwork`
+- **UUIDs**: `UUID1`, `UUID3`, `UUID4`, `UUID5`, `UUID6`, `UUID7`, `UUID8`
+- **Paths**: `FilePath`, `DirectoryPath`, `NewPath`
+- **Secrets**: `SecretStr`, `SecretBytes`
+- **Encoding**: `Base64Bytes`, `Base64Str`, `Base64UrlBytes`, `Base64UrlStr`
+- **Other**: `ByteSize`, `ImportString`, `Json`, `PaymentCardNumber` (deprecated)
+
+### pydantic-extra-types (DO NOT duplicate)
+
+- `Color` (hex, RGB, HSL, named colors)
+- `Coordinate` (latitude/longitude)
+- `CountryAlpha2`, `CountryAlpha3`, `CountryNumeric`, `CountryShortName`
+- `Currency` (ISO 4217)
+- `ISBN`
+- `LanguageAlpha2`, `LanguageName`
+- `MacAddress`
+- `PaymentCardNumber`
+- `PhoneNumber`
+- `ABARoutingNumber`
+- `ScriptCode`
+- `SemanticVersion`
+- `TimezoneName`, `TimezoneNameLoose`
+- `ULID`
+- Pendulum datetime types

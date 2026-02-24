@@ -69,6 +69,10 @@ Comments describe what code DOES, not what it USED TO DO. Git tracks history.
 
 All commands — CI, pre-commit, developer workflow — use `make` targets. Never run raw tool commands in CI or docs; always wrap them in a Makefile target. `make check` runs the full quality gate (format-check + lint + typecheck + test).
 
+### Never Overlap with Pydantic or pydantic-extra-types
+
+Before adding any new type, verify it does not duplicate functionality already provided by Pydantic core or pydantic-extra-types. See [ARCHITECTURE.md](ARCHITECTURE.md) "No-Overlap Rule" for the explicit inventory. pydantypes fills gaps — it never reimplements what already exists.
+
 ### Check Before Creating Files
 
 Prefer editing existing files. Never proactively create docs. Check structure first.
