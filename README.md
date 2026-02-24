@@ -59,8 +59,8 @@ result.sentiment.description  # "Expresses approval or satisfaction"
 | **AWS** | `pydantypes.cloud.aws` | S3 URIs, IAM ARNs, Lambda function names, EC2 instance IDs |
 | **Azure** | `pydantypes.cloud.azure` | Blob Storage URIs, resource IDs, Key Vault names |
 | **GCP** | `pydantypes.cloud.gcp` | GCS URIs, project IDs, Cloud Run service names |
-| **DevOps** | `pydantypes.devops` | Docker image refs, semver strings, cron expressions |
-| **Web** | `pydantypes.web` | Endpoint paths, header names, MIME types |
+| **DevOps** | `pydantypes.devops` | Docker image refs, Git SHAs/refs/URLs, K8s names, Helm, Terraform |
+| **Web** | `pydantypes.web` | JWTs, MIME types, FQDNs, port ranges, cryptographic hashes |
 | **Data** | `pydantypes.data` | SQL identifiers, connection strings, column names |
 | **AI** | `pydantypes.ai` | Classification labels with lifecycle, deprecation, alias resolution |
 
