@@ -8,7 +8,7 @@ from typing import Annotated
 from pydantic import AfterValidator, WithJsonSchema
 from pydantic_core import PydanticCustomError
 
-_FUNCTION_APP_NAME_PATTERN = re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9-]{0,58}[a-zA-Z0-9]$")
+_FUNCTION_APP_NAME_RE = re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9-]{0,58}[a-zA-Z0-9]$")
 _APP_SERVICE_NAME_RE = re.compile(r"^[a-zA-Z0-9]([a-zA-Z0-9-]{0,57}[a-zA-Z0-9])?$")
 _AKS_CLUSTER_NAME_RE = re.compile(r"^[a-zA-Z0-9]([a-zA-Z0-9_-]{0,61}[a-zA-Z0-9])?$")
 _CONTAINER_APP_NAME_RE = re.compile(r"^[a-z]([a-z0-9-]{0,29}[a-z0-9])?$")
@@ -18,7 +18,7 @@ _API_MANAGEMENT_NAME_RE = re.compile(r"^[a-zA-Z]([a-zA-Z0-9-]{0,48}[a-zA-Z0-9])?
 
 def _validate_function_app_name(v: str) -> str:
     """Validate an Azure Function App name format."""
-    if not _FUNCTION_APP_NAME_PATTERN.match(v):
+    if not _FUNCTION_APP_NAME_RE.match(v):
         raise PydanticCustomError(
             "azure_function_app_name",
             "Invalid Azure Function App name: {value}",

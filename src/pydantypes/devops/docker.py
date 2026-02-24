@@ -34,6 +34,7 @@ class DockerImageRef(str):
     digest: str | None
 
     def __new__(cls, value: str) -> DockerImageRef:
+        """Create and validate a new DockerImageRef instance."""
         m = cls._pattern.match(value)
         if not m:
             raise PydanticCustomError(
@@ -50,18 +51,21 @@ class DockerImageRef(str):
 
     @classmethod
     def _validate(cls, value: str) -> DockerImageRef:
+        """Validate a string as a Docker image reference."""
         return cls(value)
 
     @classmethod
     def __get_pydantic_core_schema__(
         cls, source_type: Any, handler: GetCoreSchemaHandler
     ) -> CoreSchema:
+        """Return the Pydantic core schema for DockerImageRef."""
         return _str_type_core_schema(cls, source_type, handler)
 
     @classmethod
     def __get_pydantic_json_schema__(
         cls, _core_schema: CoreSchema, handler: GetJsonSchemaHandler
     ) -> JsonSchemaValue:
+        """Return the JSON schema for DockerImageRef."""
         return {
             "type": "string",
             "format": "docker-image-ref",

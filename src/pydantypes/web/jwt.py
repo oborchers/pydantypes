@@ -21,6 +21,7 @@ class Jwt(str):
     payload: dict[str, Any]
 
     def __new__(cls, value: str) -> Jwt:
+        """Create and validate a new Jwt instance."""
         parts = value.split(".")
         if len(parts) != 3:
             raise PydanticCustomError(
@@ -58,18 +59,21 @@ class Jwt(str):
 
     @classmethod
     def _validate(cls, value: str) -> Jwt:
+        """Validate a string as a JSON Web Token."""
         return cls(value)
 
     @classmethod
     def __get_pydantic_core_schema__(
         cls, source_type: Any, handler: GetCoreSchemaHandler
     ) -> CoreSchema:
+        """Return the Pydantic core schema for Jwt."""
         return _str_type_core_schema(cls, source_type, handler)
 
     @classmethod
     def __get_pydantic_json_schema__(
         cls, _core_schema: CoreSchema, handler: GetJsonSchemaHandler
     ) -> JsonSchemaValue:
+        """Return the JSON schema for Jwt."""
         return {
             "type": "string",
             "format": "jwt",

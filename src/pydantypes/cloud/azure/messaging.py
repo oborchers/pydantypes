@@ -8,13 +8,13 @@ from typing import Annotated
 from pydantic import AfterValidator, WithJsonSchema
 from pydantic_core import PydanticCustomError
 
-_SERVICE_BUS_NAMESPACE_PATTERN = re.compile(r"^[a-zA-Z][a-zA-Z0-9-]{4,48}[a-zA-Z0-9]$")
+_SERVICE_BUS_NAMESPACE_RE = re.compile(r"^[a-zA-Z][a-zA-Z0-9-]{4,48}[a-zA-Z0-9]$")
 _EVENT_HUB_NAMESPACE_NAME_RE = re.compile(r"^[a-zA-Z][a-zA-Z0-9-]{4,48}[a-zA-Z0-9]$")
 
 
 def _validate_service_bus_namespace(v: str) -> str:
     """Validate an Azure Service Bus namespace format."""
-    if not _SERVICE_BUS_NAMESPACE_PATTERN.match(v):
+    if not _SERVICE_BUS_NAMESPACE_RE.match(v):
         raise PydanticCustomError(
             "azure_service_bus_namespace",
             "Invalid Azure Service Bus namespace: {value}",

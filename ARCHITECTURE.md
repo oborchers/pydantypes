@@ -165,7 +165,7 @@ The placement depends on the pattern:
 | **A** (str subclass) | `ClassVar` on the class | `_pattern: ClassVar[re.Pattern[str]] = re.compile(...)` |
 | **B** (Annotated) | Module level | `_EC2_INSTANCE_ID_RE = re.compile(...)` |
 
-Module-level regexes use the naming convention `_UPPER_SNAKE_CASE_RE`.
+Module-level regexes use the naming convention `_UPPER_SNAKE_CASE_RE`. The `_RE` suffix is mandatory — `_PATTERN` is prohibited.
 
 ### Why Python `re` Instead of Pydantic's Rust Regex
 
@@ -203,12 +203,16 @@ Rules:
 
 ## Docstrings
 
-Every module, class, and function has a docstring.
+Every module, class, and function has a docstring. No exceptions.
 
 - **Module:** `"""AWS storage types."""` — short, descriptive
 - **Pattern A class:** `"""An S3 URI like s3://bucket/key with parsed properties."""` — one-liner
-- **Pattern A methods:** `"""Create and validate a new S3Uri instance."""` — one-line, imperative
-- **Pattern B validator:** `"""Validate an EC2 instance ID format."""` — one-line, imperative
+- **Pattern A methods:** Every `__new__`, `_validate`, `__get_pydantic_core_schema__`, and `__get_pydantic_json_schema__` must have a one-line docstring. Templates:
+  - `__new__`: `"""Create and validate a new {ClassName} instance."""`
+  - `_validate`: `"""Validate a string as a {description}."""`
+  - `__get_pydantic_core_schema__`: `"""Return the Pydantic core schema for {ClassName}."""`
+  - `__get_pydantic_json_schema__`: `"""Return the JSON schema for {ClassName}."""`
+- **Pattern B validator:** Every `_validate_*` function must have a one-line docstring: `"""Validate a {type description} format."""`
 - **Pattern C class:** `"""AWS region identifiers."""` — one-liner
 - **`__init__.py`:** `"""AWS cloud resource types."""` — descriptive module docstring
 - **Test module:** `"""Tests for AWS storage types."""`
@@ -317,6 +321,8 @@ All Pattern A types delegate to this in `__get_pydantic_core_schema__`.
 Mirror source: `src/pydantypes/cloud/aws/storage.py` → `tests/cloud/aws/test_storage.py`
 
 One test file per source file. Module docstring: `"""Tests for AWS storage types."""`
+
+All tests use flat parametrized functions — class-based test grouping (`TestFooValid`, `TestFooInvalid`) is prohibited.
 
 ### Test Model
 

@@ -25,6 +25,7 @@ class TableIdentifier(str):
     table_name: str
 
     def __new__(cls, value: str) -> TableIdentifier:
+        """Create and validate a new TableIdentifier instance."""
         m = cls._pattern.match(value)
         if not m:
             raise PydanticCustomError(
@@ -42,18 +43,21 @@ class TableIdentifier(str):
 
     @classmethod
     def _validate(cls, value: str) -> TableIdentifier:
+        """Validate a string as a SQL table identifier."""
         return cls(value)
 
     @classmethod
     def __get_pydantic_core_schema__(
         cls, source_type: Any, handler: GetCoreSchemaHandler
     ) -> CoreSchema:
+        """Return the Pydantic core schema for TableIdentifier."""
         return _str_type_core_schema(cls, source_type, handler)
 
     @classmethod
     def __get_pydantic_json_schema__(
         cls, _core_schema: CoreSchema, handler: GetJsonSchemaHandler
     ) -> JsonSchemaValue:
+        """Return the JSON schema for TableIdentifier."""
         return {
             "type": "string",
             "format": "sql-table-identifier",

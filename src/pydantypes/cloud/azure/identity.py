@@ -8,17 +8,17 @@ from typing import Annotated
 from pydantic import AfterValidator, WithJsonSchema
 from pydantic_core import PydanticCustomError
 
-_UUID_PATTERN = re.compile(
+_UUID_RE = re.compile(
     r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
     re.IGNORECASE,
 )
 
-_RESOURCE_GROUP_PATTERN = re.compile(r"^[a-zA-Z0-9_\-.()]{1,90}$")
+_RESOURCE_GROUP_RE = re.compile(r"^[a-zA-Z0-9_\-.()]{1,90}$")
 
 
 def _validate_subscription_id(v: str) -> str:
     """Validate an Azure subscription ID format."""
-    if not _UUID_PATTERN.match(v):
+    if not _UUID_RE.match(v):
         raise PydanticCustomError(
             "azure_subscription_id",
             "Invalid Azure Subscription ID: {value}",
@@ -45,7 +45,7 @@ SubscriptionId = Annotated[
 
 def _validate_tenant_id(v: str) -> str:
     """Validate an Azure tenant ID format."""
-    if not _UUID_PATTERN.match(v):
+    if not _UUID_RE.match(v):
         raise PydanticCustomError(
             "azure_tenant_id",
             "Invalid Azure Tenant ID: {value}",
@@ -72,7 +72,7 @@ TenantId = Annotated[
 
 def _validate_resource_group_name(v: str) -> str:
     """Validate an Azure resource group name format."""
-    if not _RESOURCE_GROUP_PATTERN.match(v) or v.endswith("."):
+    if not _RESOURCE_GROUP_RE.match(v) or v.endswith("."):
         raise PydanticCustomError(
             "azure_resource_group_name",
             "Invalid Azure Resource Group name: {value}",

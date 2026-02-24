@@ -1,0 +1,43 @@
+name: Feature Request
+description: Suggest a new validated type or enhancement
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use case
+      description: What problem does this solve? When would you use this type?
+    validations:
+      required: true
+  - type: textarea
+    id: proposed-type
+    attributes:
+      label: Proposed type
+      description: Describe the type, its constraints, and valid/invalid examples.
+      render: python
+    validations:
+      required: true
+  - type: input
+    id: source-url
+    attributes:
+      label: Source URL
+      description: Link to the official spec or docs for the format being validated.
+      placeholder: "https://docs.example.com/format-spec"
+    validations:
+      required: true
+  - type: dropdown
+    id: module
+    attributes:
+      label: Module
+      description: Which module should this type belong to?
+      options:
+        - cloud/aws
+        - cloud/azure
+        - cloud/gcp
+        - devops
+        - web
+        - data
+        - ai
+        - other / unsure
+    validations:
+      required: true

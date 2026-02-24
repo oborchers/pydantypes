@@ -24,6 +24,7 @@ class TerraformResourceAddress(str):
     resource_name: str
 
     def __new__(cls, value: str) -> TerraformResourceAddress:
+        """Create and validate a new TerraformResourceAddress instance."""
         m = cls._pattern.match(value)
         if not m:
             raise PydanticCustomError(
@@ -38,18 +39,21 @@ class TerraformResourceAddress(str):
 
     @classmethod
     def _validate(cls, value: str) -> TerraformResourceAddress:
+        """Validate a string as a Terraform resource address."""
         return cls(value)
 
     @classmethod
     def __get_pydantic_core_schema__(
         cls, source_type: Any, handler: GetCoreSchemaHandler
     ) -> CoreSchema:
+        """Return the Pydantic core schema for TerraformResourceAddress."""
         return _str_type_core_schema(cls, source_type, handler)
 
     @classmethod
     def __get_pydantic_json_schema__(
         cls, _core_schema: CoreSchema, handler: GetJsonSchemaHandler
     ) -> JsonSchemaValue:
+        """Return the JSON schema for TerraformResourceAddress."""
         return {
             "type": "string",
             "format": "terraform-resource-address",

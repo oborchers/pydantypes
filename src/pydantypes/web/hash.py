@@ -8,13 +8,14 @@ from typing import Annotated
 from pydantic import AfterValidator, WithJsonSchema
 from pydantic_core import PydanticCustomError
 
-_SHA256_PATTERN = re.compile(r"^[0-9a-fA-F]{64}$")
-_SHA1_PATTERN = re.compile(r"^[0-9a-fA-F]{40}$")
-_MD5_PATTERN = re.compile(r"^[0-9a-fA-F]{32}$")
+_SHA256_RE = re.compile(r"^[0-9a-fA-F]{64}$")
+_SHA1_RE = re.compile(r"^[0-9a-fA-F]{40}$")
+_MD5_RE = re.compile(r"^[0-9a-fA-F]{32}$")
 
 
 def _validate_sha256_hex(v: str) -> str:
-    if not _SHA256_PATTERN.match(v):
+    """Validate a SHA-256 hex digest format."""
+    if not _SHA256_RE.match(v):
         raise PydanticCustomError(
             "sha256_hex",
             "Invalid SHA-256 hex digest: expected 64 hex characters. Got: {value}",
@@ -24,7 +25,8 @@ def _validate_sha256_hex(v: str) -> str:
 
 
 def _validate_sha1_hex(v: str) -> str:
-    if not _SHA1_PATTERN.match(v):
+    """Validate a SHA-1 hex digest format."""
+    if not _SHA1_RE.match(v):
         raise PydanticCustomError(
             "sha1_hex",
             "Invalid SHA-1 hex digest: expected 40 hex characters. Got: {value}",
@@ -34,7 +36,8 @@ def _validate_sha1_hex(v: str) -> str:
 
 
 def _validate_md5_hex(v: str) -> str:
-    if not _MD5_PATTERN.match(v):
+    """Validate an MD5 hex digest format."""
+    if not _MD5_RE.match(v):
         raise PydanticCustomError(
             "md5_hex",
             "Invalid MD5 hex digest: expected 32 hex characters. Got: {value}",

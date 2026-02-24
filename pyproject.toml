@@ -76,11 +76,15 @@ all = [
 [tool.ruff]
 line-length = 100
 target-version = "py310"
+src = ["src"]
 extend-exclude = ["_version.py"]
 
 [tool.ruff.lint]
 select = ["E", "F", "UP", "B", "SIM", "I", "PLC", "RUF", "PT", "N"]
-ignore = []
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["pydantypes"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["PLC0415"]

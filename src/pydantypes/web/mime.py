@@ -27,6 +27,7 @@ class MimeType(str):
     parameters: dict[str, str]
 
     def __new__(cls, value: str) -> MimeType:
+        """Create and validate a new MimeType instance."""
         m = cls._pattern.match(value)
         if not m:
             raise PydanticCustomError(
@@ -52,18 +53,21 @@ class MimeType(str):
 
     @classmethod
     def _validate(cls, value: str) -> MimeType:
+        """Validate a string as a MIME type."""
         return cls(value)
 
     @classmethod
     def __get_pydantic_core_schema__(
         cls, source_type: Any, handler: GetCoreSchemaHandler
     ) -> CoreSchema:
+        """Return the Pydantic core schema for MimeType."""
         return _str_type_core_schema(cls, source_type, handler)
 
     @classmethod
     def __get_pydantic_json_schema__(
         cls, _core_schema: CoreSchema, handler: GetJsonSchemaHandler
     ) -> JsonSchemaValue:
+        """Return the JSON schema for MimeType."""
         return {
             "type": "string",
             "format": "mime-type",
