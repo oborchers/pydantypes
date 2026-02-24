@@ -3,9 +3,9 @@
 from __future__ import annotations
 
 import re
-from typing import Any, ClassVar
+from typing import Annotated, Any, ClassVar
 
-from pydantic import GetCoreSchemaHandler, GetJsonSchemaHandler
+from pydantic import AfterValidator, GetCoreSchemaHandler, GetJsonSchemaHandler, WithJsonSchema
 from pydantic.json_schema import JsonSchemaValue
 from pydantic_core import CoreSchema, PydanticCustomError
 
@@ -66,3 +66,34 @@ class TableIdentifier(str):
             "examples": ["public.users", "my_catalog.my_schema.my_table"],
             "title": "TableIdentifier",
         }
+
+
+_SQL_IDENTIFIER_RE = re.compile(r"^[a-zA-Z_][a-zA-Z0-9_]*$")
+
+
+def _validate_sql_identifier(v: str) -> str:
+    """Validate a SQL identifier format."""
+    if not _SQL_IDENTIFIER_RE.match(v):
+        raise PydanticCustomError(
+            "sql_identifier",
+            "Invalid SQL identifier: {value}",
+            {"value": v},
+        )
+    return v
+
+
+# Source: https://www.iso.org/standard/76583.html
+SqlIdentifier = Annotated[
+    str,
+    AfterValidator(_validate_sql_identifier),
+    WithJsonSchema(
+        {
+            "type": "string",
+            "pattern": _SQL_IDENTIFIER_RE.pattern,
+            "description": "A valid unquoted SQL identifier.",
+            "examples": ["users", "_private_col", "TableName"],
+            "title": "SqlIdentifier",
+            "minLength": 1,
+        }
+    ),
+]
