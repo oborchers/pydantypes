@@ -430,20 +430,32 @@ pydantypes fills gaps — it never reimplements types already provided by Pydant
 - **Encoding**: `Base64Bytes`, `Base64Str`, `Base64UrlBytes`, `Base64UrlStr`
 - **Other**: `ByteSize`, `ImportString`, `Json`, `PaymentCardNumber` (deprecated)
 
-### pydantic-extra-types (DO NOT duplicate)
+### Third-party Pydantic-native libraries (DO NOT duplicate)
 
-- `Color` (hex, RGB, HSL, named colors)
-- `Coordinate` (latitude/longitude)
-- `CountryAlpha2`, `CountryAlpha3`, `CountryNumeric`, `CountryShortName`
-- `Currency` (ISO 4217)
+- [schwifty](https://github.com/mdomke/schwifty) — `IBAN`, `BIC` (banking identifiers with native `__get_pydantic_core_schema__` support)
+
+### pydantic-extra-types v2.11.0 (DO NOT duplicate)
+
+- `Color`, `RGBA` (hex, RGB, HSL, named colors)
+- `Coordinate`, `Latitude`, `Longitude`
+- `CountryAlpha2`, `CountryAlpha3`, `CountryNumericCode`, `CountryShortName`
+- `CronStr` (cron expressions via `cron-converter`)
+- `DomainStr` (basic domain name validation)
+- `epoch.Number`, `epoch.Integer` (datetime from unix timestamp)
+- `ISO4217`, `Currency` (currency codes)
 - `ISBN`
-- `LanguageAlpha2`, `LanguageName`
+- `ISO_15924` (script codes)
+- `LanguageAlpha2`, `LanguageName`, `ISO639_3`, `ISO639_5`
 - `MacAddress`
-- `PaymentCardNumber`
+- `MimeType` (IANA whitelist lookup — distinct from pydantypes' RFC 6838 format validator)
+- `MongoObjectId`
+- `PaymentCardNumber`, `PaymentCardBrand`
 - `PhoneNumber`
 - `ABARoutingNumber`
-- `ScriptCode`
-- `SemanticVersion`
-- `TimezoneName`, `TimezoneNameLoose`
+- `S3Path` (basic S3 path — distinct from pydantypes' `S3Uri` with full property extraction)
+- `SemanticVersion`, `ManifestVersion`
+- `TimeZoneName`
 - `ULID`
-- Pendulum datetime types
+- `UUID6`, `UUID7`, `UUID8`
+- Path types: `ExistingPath`, `ResolvedFilePath`, `ResolvedDirectoryPath`, `ResolvedNewPath`
+- Pendulum datetime types (`DateTime`, `Date`, `Time`, `Duration`)

@@ -68,6 +68,8 @@ result.sentiment.description  # "Expresses approval or satisfaction"
 
 pydantypes is designed as a complement to [pydantic-extra-types](https://github.com/pydantic/pydantic-extra-types). While pydantic-extra-types covers general-purpose types (colors, phone numbers, payment cards), pydantypes focuses on infrastructure and engineering identifiers.
 
+For **IBAN and BIC** (banking identifiers), use [schwifty](https://github.com/mdomke/schwifty) which provides native Pydantic v2 support with `__get_pydantic_core_schema__`.
+
 - Requires **Pydantic v2.5.2+**
 - Supports **Python 3.10–3.13**
 
