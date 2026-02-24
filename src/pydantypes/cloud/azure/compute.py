@@ -96,6 +96,7 @@ FunctionAppName = Annotated[
         }
     ),
 ]
+"""Azure Function App name (e.g. `my-function-app`)."""
 
 # Source: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftweb
 AppServiceName = Annotated[
@@ -111,6 +112,7 @@ AppServiceName = Annotated[
         }
     ),
 ]
+"""Azure App Service name (e.g. `my-app-service`)."""
 
 # Source: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftcontainerservice
 AksClusterName = Annotated[
@@ -126,6 +128,7 @@ AksClusterName = Annotated[
         }
     ),
 ]
+"""Azure AKS cluster name (e.g. `my-aks-cluster`)."""
 
 # Source: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftapp
 ContainerAppName = Annotated[
@@ -141,6 +144,7 @@ ContainerAppName = Annotated[
         }
     ),
 ]
+"""Azure Container App name (e.g. `my-container-app`)."""
 
 # Source: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftoperationalinsights
 LogAnalyticsWorkspaceName = Annotated[
@@ -156,6 +160,7 @@ LogAnalyticsWorkspaceName = Annotated[
         }
     ),
 ]
+"""Azure Log Analytics workspace name (e.g. `my-log-analytics`)."""
 
 # Source: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftapimanagement
 ApiManagementName = Annotated[
@@ -171,3 +176,4 @@ ApiManagementName = Annotated[
         }
     ),
 ]
+"""Azure API Management name (e.g. `my-apim`)."""

@@ -4,7 +4,7 @@ SRC := src/$(PACKAGE)
 
 .DEFAULT_GOAL := help
 
-.PHONY: help env install init sync format format-check lint lint-fix typecheck test test-cov check build clean pre-commit
+.PHONY: help env install init sync format format-check lint lint-fix typecheck test test-cov check docs-serve docs-build docs-deploy build clean pre-commit
 
 ##@ Setup
 help: ## Show this help
@@ -47,6 +47,16 @@ test-cov: ## Run tests with coverage
 
 ##@ Combined
 check: format-check lint typecheck test ## Run all checks: format + lint + typecheck + test
+
+##@ Docs
+docs-serve: ## Serve docs locally
+	$(UV) run mkdocs serve
+
+docs-build: ## Build docs
+	$(UV) run mkdocs build --strict
+
+docs-deploy: ## Deploy docs to GitHub Pages
+	$(UV) run mkdocs gh-deploy --force
 
 ##@ Build
 build: clean ## Build package

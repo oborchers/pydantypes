@@ -414,6 +414,18 @@ S3Uri and GcsUri use only the unified names. BlobStorageUri exposes both unified
 
 Subclasses must set `bucket` and `key` as instance attributes in `__new__`. The base class does not define `__new__` — each provider has its own regex and validation. Pydantic integration (`__get_pydantic_core_schema__`, `__get_pydantic_json_schema__`) remains on each subclass.
 
+## All Types Are `str`-Based
+
+Every type in pydantypes uses `str` as its base — even when the underlying format is a well-known type like UUID, integer, or date. Azure `SubscriptionId` and `TenantId` are UUIDs, but they are `Annotated[str, ...]`, not `Annotated[UUID, ...]`.
+
+**Why:**
+
+- **Consistency** — every type behaves the same way: you put a string in, you get a string out. No surprises where one type returns a `UUID` object and another returns `str`.
+- **Serialization** — `str` round-trips cleanly through JSON, YAML, TOML, environment variables, and CLI args without custom serializers.
+- **Semantic layer, not type conversion** — pydantypes validates and constrains identifiers. It does not convert them into richer Python objects. That is a different concern.
+
+If a user needs a `uuid.UUID` object, they can do `uuid.UUID(model.subscription_id)` themselves. Our job is to validate the format, not change the runtime type.
+
 ## No-Overlap Rule
 
 pydantypes fills gaps — it never reimplements types already provided by Pydantic core or pydantic-extra-types. Before adding any new type, verify it is not covered below.

@@ -93,6 +93,7 @@ BigQueryDatasetId = Annotated[
         }
     ),
 ]
+"""A GCP BigQuery dataset ID (e.g. `my_dataset`)."""
 
 # Source: https://cloud.google.com/sql/docs/mysql/instance-settings
 CloudSqlInstanceId = Annotated[
@@ -108,6 +109,7 @@ CloudSqlInstanceId = Annotated[
         }
     ),
 ]
+"""A GCP Cloud SQL instance ID (max 84 chars) (e.g. `my-sql-instance`)."""
 
 
 # Source: https://cloud.google.com/bigquery/docs/tables
@@ -183,6 +185,7 @@ SpannerInstanceId = Annotated[
         }
     ),
 ]
+"""A GCP Spanner instance ID (2-64 chars) (e.g. `my-spanner-instance`)."""
 
 # Source: https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases
 SpannerDatabaseId = Annotated[
@@ -200,3 +203,4 @@ SpannerDatabaseId = Annotated[
         }
     ),
 ]
+"""A GCP Spanner database ID (2-30 chars) (e.g. `my-spanner-db`)."""

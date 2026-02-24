@@ -84,6 +84,7 @@ CosmosDbAccountName = Annotated[
         }
     ),
 ]
+"""Azure Cosmos DB account name (e.g. `my-cosmos-account`)."""
 
 # Source: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftsql
 SqlServerName = Annotated[
@@ -99,6 +100,7 @@ SqlServerName = Annotated[
         }
     ),
 ]
+"""Azure SQL Server name (e.g. `my-sql-server`)."""
 
 # Source: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftcache
 RedisCacheName = Annotated[
@@ -114,6 +116,7 @@ RedisCacheName = Annotated[
         }
     ),
 ]
+"""Azure Redis Cache name (e.g. `my-redis-cache`)."""
 
 # Source: https://learn.microsoft.com/en-us/azure/data-factory/naming-rules
 DataFactoryName = Annotated[
@@ -129,6 +132,7 @@ DataFactoryName = Annotated[
         }
     ),
 ]
+"""Azure Data Factory name (e.g. `my-data-factory`)."""
 
 # Source: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftdatabricks
 DatabricksWorkspaceName = Annotated[
@@ -144,3 +148,4 @@ DatabricksWorkspaceName = Annotated[
         }
     ),
 ]
+"""Azure Databricks workspace name (e.g. `my-databricks-ws`)."""

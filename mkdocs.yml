@@ -1,0 +1,140 @@
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+
+site_name: pydantypes
+site_description: "The missing types for Pydantic — cloud, DevOps, web, data, and AI engineering."
+site_url: https://oborchers.github.io/pydantypes/
+repo_url: https://github.com/oborchers/pydantypes
+repo_name: oborchers/pydantypes
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+
+plugins:
+  - search
+  - termynal
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            docstring_section_style: list
+            filters: ["!^_[^_]"]
+            heading_level: 2
+            inherited_members: false
+            merge_init_into_class: true
+            show_root_heading: true
+            show_root_full_path: false
+            show_source: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            separate_signature: true
+            show_signature_annotations: true
+            signature_crossrefs: true
+            summary: true
+            line_length: 100
+  - llmstxt:
+      markdown_description: >-
+        pydantypes provides validated, constrained Pydantic types for cloud
+        (AWS/Azure/GCP), DevOps, web, data, and AI engineering identifiers.
+        Use these types in your Pydantic models for automatic validation
+        and clean JSON Schema output.
+      full_output: llms-full.txt
+      sections:
+        Getting Started:
+          - index.md
+          - getting-started.md
+        API Reference:
+          - reference/index.md
+          - reference/cloud/aws.md
+          - reference/cloud/azure.md
+          - reference/cloud/gcp.md
+          - reference/devops.md
+          - reference/web.md
+          - reference/data.md
+          - reference/ai.md
+        Contributing:
+          - contributing.md
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      use_pygments: true
+      pygments_lang_class: true
+      line_spans: __span
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - API Reference:
+      - reference/index.md
+      - Cloud:
+          - AWS: reference/cloud/aws.md
+          - Azure: reference/cloud/azure.md
+          - GCP: reference/cloud/gcp.md
+      - DevOps: reference/devops.md
+      - Web: reference/web.md
+      - Data: reference/data.md
+      - AI: reference/ai.md
+  - Contributing: contributing.md

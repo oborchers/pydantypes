@@ -1,28 +1,22 @@
 # pydantypes
 
-<p align="center">
-<a href="https://github.com/oborchers/pydantypes/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/oborchers/pydantypes/ci.yml?branch=main&logo=github&label=CI"></a>
-<a href="https://github.com/oborchers/pydantypes/blob/main/LICENSE"><img alt="license" src="https://img.shields.io/github/license/oborchers/pydantypes.svg"></a>
-<a href="https://pepy.tech/projects/pydantypes"><img src="https://static.pepy.tech/personalized-badge/pydantypes?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads" alt="PyPI Downloads"></a>
-<a href="https://docs.pydantic.dev"><img alt="Pydantic v2" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/pydantic/pydantic/main/docs/badge/v2.json"></a>
-<a href="https://github.com/astral-sh/ruff"><img alt="Ruff" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json"></a>
-<img alt="types" src="https://img.shields.io/badge/types-100%2B-blue">
-<img alt="tests" src="https://img.shields.io/badge/tests-1k%2B-brightgreen">
-</p>
-
 **The missing types for Pydantic** — cloud, DevOps, web, data, and AI engineering.
 
-pydantypes provides validated, constrained Pydantic types for identifiers, ARNs, URIs, resource names, and classification labels that appear everywhere in modern infrastructure and AI code. Catch invalid values at parse time, not at deploy time.
+pydantypes provides validated, constrained Pydantic types for identifiers, ARNs, URIs,
+resource names, and classification labels that appear everywhere in modern infrastructure
+and AI code. Catch invalid values at parse time, not at deploy time.
 
 ## Installation
 
-```bash
-pip install pydantypes
-# or
-uv add pydantypes
+<!-- termynal -->
+
+```
+$ pip install pydantypes
+---> 100%
+Successfully installed pydantypes
 ```
 
-## Quick Example
+## Quick Examples
 
 Every type validates **and** parses — you get structured properties, not just accept/reject.
 
@@ -180,31 +174,14 @@ Sentiment.alias_map()          # {"unclear": AMBIGUOUS, "unknown": AMBIGUOUS}
 
 ## Compatibility
 
-pydantypes is designed as a complement to [pydantic-extra-types](https://github.com/pydantic/pydantic-extra-types). While pydantic-extra-types covers general-purpose types (colors, phone numbers, payment cards), pydantypes focuses on infrastructure and engineering identifiers.
-
-For **IBAN and BIC** (banking identifiers), use [schwifty](https://github.com/mdomke/schwifty) which provides native Pydantic v2 support with `__get_pydantic_core_schema__`.
+pydantypes is designed as a complement to [pydantic-extra-types](https://github.com/pydantic/pydantic-extra-types).
+While pydantic-extra-types covers general-purpose types (colors, phone numbers, payment cards),
+pydantypes focuses on infrastructure and engineering identifiers.
 
 - Requires **Pydantic v2.0+**
-- Supports **Python 3.10–3.13**
+- Supports **Python 3.10--3.13**
 
-## Architecture
+## Next Steps
 
-See [ARCHITECTURE.md](ARCHITECTURE.md) for type patterns, conventions, and design decisions.
-
-## Development
-
-```bash
-# Clone and set up
-git clone https://github.com/oborchers/pydantypes.git
-cd pydantypes
-make init
-
-# Run checks
-make check        # lint + typecheck + test
-make format       # auto-format code
-make test-cov     # tests with coverage report
-```
-
-## License
-
-MIT
+- [Getting Started](getting-started.md) — installation and basic usage
+- [API Reference](reference/index.md) — full type documentation by domain

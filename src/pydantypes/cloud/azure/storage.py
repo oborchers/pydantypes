@@ -42,6 +42,7 @@ StorageAccountName = Annotated[
         }
     ),
 ]
+"""Azure Storage account name (e.g. `mystorageaccount`)."""
 
 
 # Source: https://learn.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata

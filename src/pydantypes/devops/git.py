@@ -45,6 +45,7 @@ GitCommitSha = Annotated[
         }
     ),
 ]
+"""A full 40-character Git commit SHA-1 hash (normalized to lowercase) (e.g. `a94a8fe5ccb19ba61c4c0873d391e987982fbbd3`)."""
 
 # ---------------------------------------------------------------------------
 # Pattern B: GitShortSha
@@ -80,6 +81,7 @@ GitShortSha = Annotated[
         }
     ),
 ]
+"""A Git short SHA prefix (7-40 hex characters, normalized to lowercase) (e.g. `a94a8fe`)."""
 
 # ---------------------------------------------------------------------------
 # Pattern B: GitRef
@@ -165,6 +167,7 @@ GitRef = Annotated[
         }
     ),
 ]
+"""A valid Git ref name (branch or tag) per git-check-ref-format rules (e.g. `main`)."""
 
 # ---------------------------------------------------------------------------
 # Pattern A: GitSshUrl

@@ -97,3 +97,4 @@ SqlIdentifier = Annotated[
         }
     ),
 ]
+"""A valid unquoted SQL identifier (e.g. `users`)."""

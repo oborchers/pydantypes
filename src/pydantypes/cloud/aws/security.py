@@ -77,6 +77,7 @@ KmsKeyId = Annotated[
         }
     ),
 ]
+"""An AWS KMS key ID (UUID or multi-region key ID) (e.g. `12345678-1234-1234-1234-123456789012`)."""
 
 # Source: https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_CreateSecret.html
 SecretsManagerSecretName = Annotated[
@@ -93,6 +94,7 @@ SecretsManagerSecretName = Annotated[
         }
     ),
 ]
+"""An AWS Secrets Manager secret name (e.g. `prod/my-app/db-password`)."""
 
 # Source: https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PutParameter.html
 SsmParameterName = Annotated[
@@ -109,3 +111,4 @@ SsmParameterName = Annotated[
         }
     ),
 ]
+"""An AWS SSM Parameter Store parameter name (e.g. `/my-app/config/database-url`)."""

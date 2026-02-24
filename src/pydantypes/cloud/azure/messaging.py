@@ -48,6 +48,7 @@ ServiceBusNamespace = Annotated[
         }
     ),
 ]
+"""Azure Service Bus namespace (e.g. `my-servicebus-ns`)."""
 
 # Source: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsofteventhub
 EventHubNamespaceName = Annotated[
@@ -63,3 +64,4 @@ EventHubNamespaceName = Annotated[
         }
     ),
 ]
+"""Azure Event Hub namespace name (e.g. `my-eventhub-ns`)."""

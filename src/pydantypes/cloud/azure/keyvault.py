@@ -106,6 +106,7 @@ KeyVaultName = Annotated[
         }
     ),
 ]
+"""Azure Key Vault name (e.g. `my-key-vault`)."""
 
 # Source: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftkeyvault
 KeyVaultSecretName = Annotated[
@@ -122,3 +123,4 @@ KeyVaultSecretName = Annotated[
         }
     ),
 ]
+"""Azure Key Vault secret name (e.g. `my-secret`)."""

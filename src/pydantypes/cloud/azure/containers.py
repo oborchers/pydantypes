@@ -38,3 +38,4 @@ ContainerRegistryName = Annotated[
         }
     ),
 ]
+"""Azure Container Registry name (e.g. `mycontainerregistry`)."""

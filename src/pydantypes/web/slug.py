@@ -45,3 +45,4 @@ Slug = Annotated[
         }
     ),
 ]
+"""A URL-friendly slug: lowercase alphanumeric with hyphens (e.g. `my-blog-post`)."""

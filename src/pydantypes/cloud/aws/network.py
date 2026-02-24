@@ -112,6 +112,7 @@ VpcId = Annotated[
         }
     ),
 ]
+"""An AWS VPC ID (e.g. `vpc-1234567890abcdef0`)."""
 
 # Source: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html
 SubnetId = Annotated[
@@ -127,6 +128,7 @@ SubnetId = Annotated[
         }
     ),
 ]
+"""An AWS Subnet ID (e.g. `subnet-1234567890abcdef0`)."""
 
 # Source: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html
 SecurityGroupId = Annotated[
@@ -142,6 +144,7 @@ SecurityGroupId = Annotated[
         }
     ),
 ]
+"""An AWS Security Group ID (e.g. `sg-1234567890abcdef0`)."""
 
 # Source: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html
 NatGatewayId = Annotated[
@@ -157,6 +160,7 @@ NatGatewayId = Annotated[
         }
     ),
 ]
+"""An AWS NAT Gateway ID (e.g. `nat-1234567890abcdef0`)."""
 
 # Source: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html
 InternetGatewayId = Annotated[
@@ -172,6 +176,7 @@ InternetGatewayId = Annotated[
         }
     ),
 ]
+"""An AWS Internet Gateway ID (e.g. `igw-1234567890abcdef0`)."""
 
 # Source: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html
 ElasticIpAllocationId = Annotated[
@@ -187,6 +192,7 @@ ElasticIpAllocationId = Annotated[
         }
     ),
 ]
+"""An AWS Elastic IP Allocation ID (e.g. `eipalloc-1234567890abcdef0`)."""
 
 # Source: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html
 EniId = Annotated[
@@ -202,6 +208,7 @@ EniId = Annotated[
         }
     ),
 ]
+"""An AWS ENI (Elastic Network Interface) ID (e.g. `eni-1234567890abcdef0`)."""
 
 # Source: https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_Distribution.html
 CloudFrontDistributionId = Annotated[
@@ -217,6 +224,7 @@ CloudFrontDistributionId = Annotated[
         }
     ),
 ]
+"""An AWS CloudFront Distribution ID (e.g. `E1A2B3C4D5E6F7`)."""
 
 # Source: https://docs.aws.amazon.com/Route53/latest/APIReference/API_HostedZone.html
 Route53HostedZoneId = Annotated[
@@ -232,3 +240,4 @@ Route53HostedZoneId = Annotated[
         }
     ),
 ]
+"""An AWS Route53 Hosted Zone ID (e.g. `Z1234567890ABC`)."""

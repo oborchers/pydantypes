@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 pydantypes — The missing types for Pydantic. Validated, constrained types for cloud (AWS/Azure/GCP), DevOps, web, data, and AI engineering identifiers.
 
-**Repo**: https://github.com/oborchers/pydantypes | **Python**: 3.10+ | **Pydantic**: v2.5.2+
+**Repo**: https://github.com/oborchers/pydantypes | **Python**: 3.10+ | **Pydantic**: v2.0+
 
 ## Quick Start
 
@@ -68,6 +68,10 @@ Comments describe what code DOES, not what it USED TO DO. Git tracks history.
 ### Makefile Is the Single Source of Truth
 
 All commands — CI, pre-commit, developer workflow — use `make` targets. Never run raw tool commands in CI or docs; always wrap them in a Makefile target. `make check` runs the full quality gate (format-check + lint + typecheck + test).
+
+### All Types Are `str`-Based
+
+Every type uses `str` as its base — even when the format is a well-known type like UUID. Azure `SubscriptionId` is `Annotated[str, ...]`, not `Annotated[UUID, ...]`. Consistency over cleverness: string in, string out. See [ARCHITECTURE.md](ARCHITECTURE.md) "All Types Are str-Based" for rationale.
 
 ### Never Overlap with Pydantic or pydantic-extra-types
 

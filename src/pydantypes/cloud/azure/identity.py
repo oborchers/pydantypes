@@ -41,6 +41,7 @@ SubscriptionId = Annotated[
         }
     ),
 ]
+"""Azure Subscription ID (UUID) (e.g. `12345678-1234-1234-1234-123456789012`)."""
 
 
 def _validate_tenant_id(v: str) -> str:
@@ -68,6 +69,7 @@ TenantId = Annotated[
         }
     ),
 ]
+"""Azure Tenant ID (UUID) (e.g. `12345678-1234-1234-1234-123456789012`)."""
 
 
 def _validate_resource_group_name(v: str) -> str:
@@ -95,3 +97,4 @@ ResourceGroupName = Annotated[
         }
     ),
 ]
+"""Azure Resource Group name (e.g. `my-resource-group`)."""

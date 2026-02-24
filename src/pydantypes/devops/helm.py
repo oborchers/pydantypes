@@ -36,3 +36,4 @@ HelmChartName = Annotated[
         }
     ),
 ]
+"""A valid Helm chart name (e.g. `nginx`)."""

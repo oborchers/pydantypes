@@ -41,6 +41,7 @@ K8sNamespaceName = Annotated[
         }
     ),
 ]
+"""A valid Kubernetes namespace name (RFC 1123 DNS label) (e.g. `default`)."""
 
 
 def _validate_k8s_resource_name(v: str) -> str:
@@ -76,6 +77,7 @@ K8sResourceName = Annotated[
         }
     ),
 ]
+"""A valid Kubernetes resource name (RFC 1123 DNS subdomain, max 253 chars) (e.g. `my-deployment`)."""
 
 
 # Source: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
@@ -158,3 +160,4 @@ K8sLabelValue = Annotated[
         }
     ),
 ]
+"""A valid Kubernetes label value (max 63 chars, empty allowed) (e.g. `v1.0`)."""

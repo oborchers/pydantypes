@@ -25,10 +25,11 @@ classifiers = [
     "Typing :: Typed",
 ]
 dependencies = [
-    "pydantic>=2.5.2",
+    "pydantic>=2.0",
 ]
 
 [project.urls]
+Documentation = "https://oborchers.github.io/pydantypes/"
 Repository = "https://github.com/oborchers/pydantypes"
 Issues = "https://github.com/oborchers/pydantypes/issues"
 Releases = "https://github.com/oborchers/pydantypes/releases"
@@ -65,10 +66,18 @@ test = [
     "coverage[toml]>=7.0.0",
     "dirty-equals>=0.7.1",
 ]
+docs = [
+    "mkdocs>=1.6.0",
+    "mkdocs-material>=9.5.0",
+    "mkdocstrings[python]>=0.27.0",
+    "mkdocs-llmstxt>=0.2.0",
+    "termynal>=0.12.0",
+]
 all = [
     { include-group = "dev" },
     { include-group = "lint" },
     { include-group = "test" },
+    { include-group = "docs" },
 ]
 
 # --- Ruff ---

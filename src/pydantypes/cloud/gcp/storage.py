@@ -66,6 +66,7 @@ GcsBucketName = Annotated[
         }
     ),
 ]
+"""A GCP Cloud Storage bucket name (e.g. `my-bucket`)."""
 
 
 # Source: https://cloud.google.com/storage/docs/request-endpoints

@@ -44,3 +44,4 @@ KafkaTopicName = Annotated[
         }
     ),
 ]
+"""A valid Apache Kafka topic name (e.g. `my-topic`)."""

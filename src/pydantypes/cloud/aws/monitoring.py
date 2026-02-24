@@ -43,3 +43,4 @@ CloudWatchLogGroupName = Annotated[
         }
     ),
 ]
+"""An AWS CloudWatch Log Group name (e.g. `/my-app/production`)."""

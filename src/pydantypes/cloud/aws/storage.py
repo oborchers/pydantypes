@@ -98,6 +98,7 @@ S3BucketName = Annotated[
         }
     ),
 ]
+"""An AWS S3 bucket name (e.g. `my-bucket`)."""
 
 
 # Source: https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html
@@ -165,6 +166,7 @@ EbsVolumeId = Annotated[
         }
     ),
 ]
+"""An AWS EBS Volume ID (e.g. `vol-1234567890abcdef0`)."""
 
 # Source: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html
 EbsSnapshotId = Annotated[
@@ -180,3 +182,4 @@ EbsSnapshotId = Annotated[
         }
     ),
 ]
+"""An AWS EBS Snapshot ID (e.g. `snap-1234567890abcdef0`)."""

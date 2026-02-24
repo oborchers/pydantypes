@@ -83,6 +83,7 @@ ProjectId = Annotated[
         }
     ),
 ]
+"""A GCP project ID (6-30 lowercase chars) (e.g. `my-project-123`)."""
 
 # Source: https://cloud.google.com/resource-manager/docs/creating-managing-projects
 ProjectNumber = Annotated[
@@ -98,6 +99,7 @@ ProjectNumber = Annotated[
         }
     ),
 ]
+"""A GCP project number (e.g. `123456789012`)."""
 
 # Source: https://cloud.google.com/billing/docs/how-to/find-billing-account-id
 BillingAccountId = Annotated[
@@ -113,6 +115,7 @@ BillingAccountId = Annotated[
         }
     ),
 ]
+"""A GCP billing account ID (e.g. `01A2B3-C4D5E6-F7G8H9`)."""
 
 # Source: https://cloud.google.com/resource-manager/docs/creating-managing-organization
 OrganizationId = Annotated[
@@ -128,6 +131,7 @@ OrganizationId = Annotated[
         }
     ),
 ]
+"""A GCP organization ID (e.g. `123456789012`)."""
 
 
 # Source: https://cloud.google.com/iam/docs/service-accounts-create

@@ -84,6 +84,7 @@ Ec2InstanceId = Annotated[
         }
     ),
 ]
+"""An AWS EC2 instance ID (e.g. `i-1234567890abcdef0`)."""
 
 # Source: https://docs.aws.amazon.com/lambda/latest/api/API_CreateFunction.html
 LambdaFunctionName = Annotated[
@@ -100,6 +101,7 @@ LambdaFunctionName = Annotated[
         }
     ),
 ]
+"""An AWS Lambda function name (e.g. `my-function`)."""
 
 # Source: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html
 AmiId = Annotated[
@@ -115,6 +117,7 @@ AmiId = Annotated[
         }
     ),
 ]
+"""An AWS AMI ID (e.g. `ami-1234567890abcdef0`)."""
 
 # Source: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateCluster.html
 EcsClusterName = Annotated[
@@ -131,6 +134,7 @@ EcsClusterName = Annotated[
         }
     ),
 ]
+"""An AWS ECS cluster name (e.g. `my-ecs-cluster`)."""
 
 # Source: https://docs.aws.amazon.com/eks/latest/APIReference/API_CreateCluster.html
 EksClusterName = Annotated[
@@ -147,3 +151,4 @@ EksClusterName = Annotated[
         }
     ),
 ]
+"""An AWS EKS cluster name (e.g. `my-eks-cluster`)."""

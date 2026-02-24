@@ -63,6 +63,7 @@ Sha256Hex = Annotated[
         }
     ),
 ]
+"""A SHA-256 hex digest (64 hex characters, normalized to lowercase) (e.g. `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`)."""
 
 # Source: https://datatracker.ietf.org/doc/html/rfc3174
 Sha1Hex = Annotated[
@@ -81,6 +82,7 @@ Sha1Hex = Annotated[
         }
     ),
 ]
+"""A SHA-1 hex digest (40 hex characters, normalized to lowercase) (e.g. `da39a3ee5e6b4b0d3255bfef95601890afd80709`)."""
 
 # Source: https://datatracker.ietf.org/doc/html/rfc1321
 Md5Hex = Annotated[
@@ -99,3 +101,4 @@ Md5Hex = Annotated[
         }
     ),
 ]
+"""An MD5 hex digest (32 hex characters, normalized to lowercase) (e.g. `d41d8cd98f00b204e9800998ecf8427e`)."""

@@ -62,6 +62,7 @@ DynamoDbTableName = Annotated[
         }
     ),
 ]
+"""An AWS DynamoDB table name (e.g. `my-table`)."""
 
 # Source: https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html
 RdsInstanceId = Annotated[
@@ -78,3 +79,4 @@ RdsInstanceId = Annotated[
         }
     ),
 ]
+"""An AWS RDS instance identifier (lowercase only) (e.g. `my-db-instance`)."""

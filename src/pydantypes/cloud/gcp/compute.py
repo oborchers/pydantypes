@@ -60,6 +60,7 @@ CloudRunServiceName = Annotated[
         }
     ),
 ]
+"""A GCP Cloud Run service name (1-49 lowercase chars) (e.g. `my-service`)."""
 
 # Source: https://cloud.google.com/compute/docs/naming-resources
 ComputeResourceName = Annotated[
@@ -75,6 +76,7 @@ ComputeResourceName = Annotated[
         }
     ),
 ]
+"""A GCP Compute Engine resource name (1-63 lowercase chars) (e.g. `my-vm-instance`)."""
 
 # Source: https://cloud.google.com/functions/docs/reference/rest/v2/projects.locations.functions
 CloudFunctionName = Annotated[
@@ -90,3 +92,4 @@ CloudFunctionName = Annotated[
         }
     ),
 ]
+"""A GCP Cloud Function name (1-49 lowercase chars) (e.g. `my-function`)."""

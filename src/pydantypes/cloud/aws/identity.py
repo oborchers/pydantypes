@@ -56,6 +56,7 @@ AccountId = Annotated[
         }
     ),
 ]
+"""A 12-digit AWS Account ID (e.g. `123456789012`)."""
 
 # Source: https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CreateUserPool.html
 CognitoUserPoolId = Annotated[
@@ -72,3 +73,4 @@ CognitoUserPoolId = Annotated[
         }
     ),
 ]
+"""An AWS Cognito User Pool ID (e.g. `us-east-1_AbCdEfGhI`)."""
