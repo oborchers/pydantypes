@@ -125,8 +125,10 @@ markdown_extensions:
       custom_checkbox: true
 
 nav:
-  - Home: index.md
-  - Getting Started: getting-started.md
+  - Guide:
+      - Home: index.md
+      - Getting Started: getting-started.md
+      - Contributing: contributing.md
   - API Reference:
       - reference/index.md
       - Cloud:
@@ -137,4 +139,3 @@ nav:
       - Web: reference/web.md
       - Data: reference/data.md
       - AI: reference/ai.md
-  - Contributing: contributing.md

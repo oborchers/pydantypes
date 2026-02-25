@@ -172,6 +172,99 @@ Sentiment.schema_values()      # ["positive", "negative", "neutral", "mixed"] (e
 Sentiment.alias_map()          # {"unclear": AMBIGUOUS, "unknown": AMBIGUOUS}
 ```
 
+## Real-World Examples
+
+### Cloud config with Pydantic Settings
+
+```python
+from pydantic_settings import BaseSettings
+from pydantypes.cloud.aws import S3BucketName, Region, AccountId
+
+class AppConfig(BaseSettings):
+    model_config = {"env_prefix": "APP_"}
+
+    data_bucket: S3BucketName
+    region: Region
+    account_id: AccountId
+
+# Reads from APP_DATA_BUCKET, APP_REGION, APP_ACCOUNT_ID
+config = AppConfig()
+```
+
+### FastAPI route with validated slugs
+
+```python
+from fastapi import FastAPI
+from pydantypes.web import Slug
+
+app = FastAPI()
+
+@app.get("/articles/{slug}")
+async def get_article(slug: Slug):
+    # slug is guaranteed to match [a-z0-9]+(-[a-z0-9]+)*
+    return {"slug": slug}
+```
+
+### Kubernetes manifest builder
+
+```python
+from pydantic import BaseModel
+from pydantypes.devops import DockerImageRef, K8sNamespaceName, K8sLabelValue
+
+class K8sDeployment(BaseModel):
+    namespace: K8sNamespaceName
+    image: DockerImageRef
+    app_label: K8sLabelValue
+
+deploy = K8sDeployment(
+    namespace="production",
+    image="ghcr.io/myorg/api:v2.1.0",
+    app_label="my-api",
+)
+deploy.image.registry  # "ghcr.io"
+deploy.image.tag       # "v2.1.0"
+```
+
+### Data pipeline validation
+
+```python
+from pydantic import BaseModel
+from pydantypes.cloud.gcp import ProjectId, BigQueryDatasetId
+from pydantypes.data import KafkaTopicName
+
+class PipelineStep(BaseModel):
+    source_topic: KafkaTopicName
+    dest_project: ProjectId
+    dest_dataset: BigQueryDatasetId
+
+step = PipelineStep(
+    source_topic="events.user-signups",
+    dest_project="analytics-prod-123",
+    dest_dataset="raw_events",
+)
+```
+
+### Secure API client config
+
+```python
+from pydantic import BaseModel, SecretStr
+from pydantypes.web import Fqdn, BearerToken
+from pydantypes.cloud.aws import Arn
+
+class ApiClientConfig(BaseModel):
+    endpoint: Fqdn
+    auth_token: BearerToken
+    role_arn: Arn
+
+config = ApiClientConfig(
+    endpoint="api.example.com",
+    auth_token="Bearer eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJhcGkifQ.sig",
+    role_arn="arn:aws:iam::123456789012:role/api-consumer",
+)
+config.auth_token.token  # "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJhcGkifQ.sig"
+config.role_arn.service   # "iam"
+```
+
 ## Compatibility
 
 pydantypes is designed as a complement to [pydantic-extra-types](https://github.com/pydantic/pydantic-extra-types).

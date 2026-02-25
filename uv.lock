@@ -1076,7 +1076,7 @@ test = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "pydantic", specifier = ">=2.0" }]
+requires-dist = [{ name = "pydantic", specifier = ">=2.5" }]
 
 [package.metadata.requires-dev]
 all = [
