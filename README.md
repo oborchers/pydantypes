@@ -205,6 +205,10 @@ make format       # auto-format code
 make test-cov     # tests with coverage report
 ```
 
+## Disclaimer
+
+pydantypes is an independent, community-maintained package and is not affiliated with or endorsed by Pydantic Services Inc.
+
 ## License
 
 MIT
