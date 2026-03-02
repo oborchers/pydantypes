@@ -26,6 +26,11 @@ def test_invalid_region(value: str) -> None:
         RegionModel(region=value)
 
 
+def test_region_str_returns_value() -> None:
+    assert str(Region.US_EAST_1) == "us-east-1"
+    assert str(Region.EU_WEST_1) == "eu-west-1"
+
+
 def test_region_serialization() -> None:
     model = RegionModel(region="us-east-1")
     assert model.model_dump() == {"region": "us-east-1"}

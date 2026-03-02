@@ -314,6 +314,32 @@ class TestPlainStringSupport:
 
 
 # ---------------------------------------------------------------------------
+# str() behavior
+# ---------------------------------------------------------------------------
+
+
+class TestStrBehavior:
+    def test_str_returns_value(self) -> None:
+        assert str(Sentiment.POSITIVE) == "positive"
+
+    def test_str_matches_value_for_all_members(self) -> None:
+        for member in Sentiment:
+            assert str(member) == member.value
+
+    def test_str_in_fstring(self) -> None:
+        label = Sentiment.POSITIVE
+        assert f"label: {label}" == "label: positive"
+
+    def test_str_concat(self) -> None:
+        label = Sentiment.POSITIVE
+        assert "label: " + str(label) == "label: positive"
+
+    def test_simple_labels_str(self) -> None:
+        assert str(SimpleLabels.YES) == "yes"
+        assert str(SimpleLabels.NO) == "no"
+
+
+# ---------------------------------------------------------------------------
 # Existing instance pass-through
 # ---------------------------------------------------------------------------
 

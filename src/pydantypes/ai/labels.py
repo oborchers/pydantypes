@@ -65,6 +65,9 @@ class LabelEnum(str, Enum):
         obj.aliases = label.aliases
         return obj
 
+    def __str__(self) -> str:
+        return str(self.value)
+
     @classmethod
     def active_labels(cls) -> list[LabelEnum]:
         """Return all non-deprecated, non-retired members."""
