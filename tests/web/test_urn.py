@@ -30,6 +30,8 @@ class UrnModel(BaseModel):
         "urn:example:a123,z456",
         "urn:example:foo-bar",
         "urn:example:resource/sub/path",
+        "urn:example:foo~bar",
+        "urn:example:foo&bar",
     ],
 )
 def test_valid_urn(value: str) -> None:
@@ -85,6 +87,13 @@ def test_urn_properties_all_components() -> None:
 def test_urn_nid_normalized_to_lowercase() -> None:
     urn = Urn("urn:ISBN:0451450523")
     assert urn.nid == "isbn"
+
+
+def test_urn_r_component_with_question_mark() -> None:
+    urn = Urn("urn:example:res?+info?more")
+    assert urn.nid == "example"
+    assert urn.nss == "res"
+    assert urn.r_component == "info?more"
 
 
 def test_urn_case_insensitive_prefix() -> None:

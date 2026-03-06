@@ -43,6 +43,36 @@ K8sNamespaceName = Annotated[
 ]
 """A valid Kubernetes namespace name (RFC 1123 DNS label) (e.g. `default`)."""
 
+_K8S_DNS_LABEL_RE = re.compile(r"^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$")
+
+
+def _validate_k8s_dns_label(v: str) -> str:
+    """Validate a Kubernetes DNS label format."""
+    if not _K8S_DNS_LABEL_RE.match(v):
+        raise PydanticCustomError(
+            "k8s_dns_label",
+            "Invalid Kubernetes DNS label (RFC 1035): {value}",
+            {"value": v},
+        )
+    return v
+
+
+# Source: https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.1
+K8sDnsLabel = Annotated[
+    str,
+    AfterValidator(_validate_k8s_dns_label),
+    WithJsonSchema(
+        {
+            "type": "string",
+            "pattern": _K8S_DNS_LABEL_RE.pattern,
+            "description": "A DNS label per RFC 1035 (must start with a letter, max 63 chars).",
+            "examples": ["nginx", "my-container"],
+            "title": "K8sDnsLabel",
+        }
+    ),
+]
+"""A DNS label per RFC 1035 (must start with a letter, max 63 chars) (e.g. `nginx`)."""
+
 
 def _validate_k8s_resource_name(v: str) -> str:
     """Validate a Kubernetes resource name format."""

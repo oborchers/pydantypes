@@ -19,7 +19,7 @@ from pydantypes._internal import _str_type_core_schema
 _DOMAIN_RE = re.compile(
     r"^(?=.{1,253}$)"
     r"(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+"
-    r"[a-zA-Z]{2,63}$"
+    r"[a-zA-Z][a-zA-Z0-9-]{0,62}$"
 )
 
 
@@ -60,9 +60,10 @@ class Host(str):
         except ValueError:
             pass
 
-        # Try domain name
-        if _DOMAIN_RE.match(value):
-            normalized = value.lower()
+        # Try domain name — strip a single trailing dot (DNS absolute notation)
+        domain_value = value[:-1] if value.endswith(".") and not value.endswith("..") else value
+        if _DOMAIN_RE.match(domain_value):
+            normalized = domain_value.lower()
             instance = str.__new__(cls, normalized)
             instance.host_type = "domain"
             return instance

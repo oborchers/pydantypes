@@ -87,3 +87,34 @@ def test_md5_normalizes_to_lowercase() -> None:
 def test_invalid_md5(value: str) -> None:
     with pytest.raises(ValidationError):
         Md5Model(digest=value)
+
+
+def test_md5_scientific_notation_lookalike() -> None:
+    """Regression: pydantic#9621 — MD5 with 'e' parsed as inf."""
+    value = "20862292665203397e00089319024245"
+    # Pad to 32 chars — the original issue value is 31 chars
+    value = value.ljust(32, "0")
+    model = Md5Model(digest=value)
+    assert model.digest == value
+
+
+def test_md5_rejects_inf() -> None:
+    """The corrupted output from pydantic#9621 must be rejected."""
+    with pytest.raises(ValidationError):
+        Md5Model(digest="inf")
+
+
+def test_md5_serialization() -> None:
+    value = "d41d8cd98f00b204e9800998ecf8427e"
+    model = Md5Model(digest=value)
+    json_str = model.model_dump_json()
+    restored = Md5Model.model_validate_json(json_str)
+    assert restored.digest == model.digest
+
+
+def test_sha1_serialization() -> None:
+    value = "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    model = Sha1Model(digest=value)
+    json_str = model.model_dump_json()
+    restored = Sha1Model.model_validate_json(json_str)
+    assert restored.digest == model.digest

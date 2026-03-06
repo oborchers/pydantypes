@@ -13,6 +13,7 @@ from pydantypes._internal import _str_type_core_schema
 from pydantypes.cloud._base import CloudStorageUri
 
 _S3_BUCKET_NAME_RE = re.compile(r"^[a-z0-9][a-z0-9.-]{1,61}[a-z0-9]$")
+_S3_KEY_CONTROL_CHAR_RE = re.compile(r"[\x00-\x1f\x7f]")
 _EBS_VOLUME_ID_RE = re.compile(r"^vol-[0-9a-f]{8,17}$")
 _EBS_SNAPSHOT_ID_RE = re.compile(r"^snap-[0-9a-f]{8,17}$")
 
@@ -120,9 +121,22 @@ class S3Uri(CloudStorageUri):
             )
         bucket = m.group(1)
         _validate_s3_bucket_name(bucket)
+        key = m.group(3) or ""
+        if len(key.encode("utf-8")) > 1024:
+            raise PydanticCustomError(
+                "s3_uri",
+                "Invalid S3 URI: key must be <= 1024 bytes. Got: {value}",
+                {"value": value},
+            )
+        if _S3_KEY_CONTROL_CHAR_RE.search(key):
+            raise PydanticCustomError(
+                "s3_uri",
+                "Invalid S3 URI: key must not contain control characters. Got: {value}",
+                {"value": value},
+            )
         instance = str.__new__(cls, value)
         instance.bucket = bucket
-        instance.key = m.group(3) or ""
+        instance.key = key
         return instance
 
     @classmethod

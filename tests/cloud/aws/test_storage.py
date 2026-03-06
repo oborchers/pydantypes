@@ -149,6 +149,57 @@ def test_invalid_ebs_snapshot_id(value: str) -> None:
         EbsSnapModel(snap_id=value)
 
 
+def test_s3_uri_key_at_max_length() -> None:
+    key = "a" * 1024
+    model = S3UriModel(uri=f"s3://my-bucket/{key}")
+    assert model.uri.key == key
+
+
+def test_s3_uri_key_too_long() -> None:
+    key = "a" * 1025
+    with pytest.raises(ValidationError):
+        S3UriModel(uri=f"s3://my-bucket/{key}")
+
+
+@pytest.mark.parametrize(
+    "value",
+    [
+        "s3://my-bucket/path\twith\ttab",
+        "s3://my-bucket/path\x00null",
+        "s3://my-bucket/path\x1fcontrol",
+        "s3://my-bucket/path\x7fdelete",
+    ],
+)
+def test_s3_uri_rejects_control_chars(value: str) -> None:
+    with pytest.raises(ValidationError):
+        S3UriModel(uri=value)
+
+
+def test_s3_uri_is_folder() -> None:
+    uri = S3Uri("s3://my-bucket/path/to/folder/")
+    assert uri.is_folder is True
+    assert uri.is_file is False
+
+
+def test_s3_uri_is_file() -> None:
+    uri = S3Uri("s3://my-bucket/path/to/file.csv")
+    assert uri.is_file is True
+    assert uri.is_folder is False
+
+
+def test_s3_uri_name_and_suffix() -> None:
+    uri = S3Uri("s3://my-bucket/path/to/file.csv")
+    assert uri.name == "file.csv"
+    assert uri.suffix == ".csv"
+
+
+def test_s3_uri_no_key_is_folder() -> None:
+    uri = S3Uri("s3://my-bucket")
+    assert uri.is_folder is True
+    assert uri.name == ""
+    assert uri.suffix == ""
+
+
 def test_ebs_snapshot_id_serialization() -> None:
     model = EbsSnapModel(snap_id="snap-1234567890abcdef0")
     assert model.model_dump() == {"snap_id": "snap-1234567890abcdef0"}

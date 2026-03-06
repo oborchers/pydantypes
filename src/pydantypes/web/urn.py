@@ -26,8 +26,8 @@ from pydantypes._internal import _str_type_core_schema
 _URN_RE = re.compile(
     r"^(?i:urn)"  # case-insensitive "urn" prefix
     r":(?P<nid>[a-zA-Z0-9][a-zA-Z0-9-]{0,30}[a-zA-Z0-9])"
-    r":(?P<nss>[a-zA-Z0-9()+,\-./:=@;$_!*'%]+)"
-    r"(?:\?\+(?P<r_component>[^?#]+))?"
+    r":(?P<nss>[a-zA-Z0-9()+,\-./:=@;$_!*'~&%]+)"
+    r"(?:\?\+(?P<r_component>(?:(?!\?=)(?!#).)+))?"
     r"(?:\?=(?P<q_component>[^#]+))?"
     r"(?:#(?P<f_component>.+))?$"
 )

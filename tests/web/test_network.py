@@ -35,6 +35,9 @@ class PortModel(BaseModel):
         ("example.com", "domain"),
         ("api.github.com", "domain"),
         ("my-host.example.co.uk", "domain"),
+        ("xn--nxasmq6b.example.com", "domain"),
+        ("example.xn--vermgensberatung-pwb", "domain"),
+        ("example.com.", "domain"),
         ("192.168.1.1", "ipv4"),
         ("10.0.0.1", "ipv4"),
         ("0.0.0.0", "ipv4"),
@@ -60,6 +63,12 @@ def test_host_ipv4_preserves_value() -> None:
     assert str(host) == "192.168.1.1"
 
 
+def test_host_trailing_dot_stripped() -> None:
+    host = Host("example.com.")
+    assert str(host) == "example.com"
+    assert host.host_type == "domain"
+
+
 def test_host_ipv6_preserves_brackets() -> None:
     host = Host("[::1]")
     assert str(host) == "[::1]"
@@ -77,6 +86,7 @@ def test_host_ipv6_preserves_brackets() -> None:
         "[::gggg]",
         "example",
         "-example.com",
+        "example.com..",
     ],
 )
 def test_invalid_host(value: str) -> None:
