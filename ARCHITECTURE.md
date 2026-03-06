@@ -24,9 +24,24 @@ class S3Uri(CloudStorageUri):
         m = cls._pattern.match(value)
         if not m:
             raise PydanticCustomError("s3_uri", "Invalid S3 URI: {value}", {"value": value})
+        bucket = m.group(1)
+        _validate_s3_bucket_name(bucket)
+        key = m.group(3) or ""
+        if len(key.encode("utf-8")) > 1024:
+            raise PydanticCustomError(
+                "s3_uri",
+                "Invalid S3 URI: key must be <= 1024 bytes. Got: {value}",
+                {"value": value},
+            )
+        if _S3_KEY_CONTROL_CHAR_RE.search(key):
+            raise PydanticCustomError(
+                "s3_uri",
+                "Invalid S3 URI: key must not contain control characters. Got: {value}",
+                {"value": value},
+            )
         instance = str.__new__(cls, value)
-        instance.bucket = m.group(1)
-        instance.key = m.group(3) or ""
+        instance.bucket = bucket
+        instance.key = key
         return instance
 
     @classmethod
@@ -384,11 +399,11 @@ When a URI type contains a component that has its own standalone type, the URI v
 ```python
 # S3Uri.__new__ delegates bucket validation:
 bucket = m.group(1)
-_validate_s3_bucket_name(bucket)  # reuse S3BucketName's validator
+_validate_s3_bucket_name(bucket)  # reuses S3BucketName's validator
 
 # GcsUri.__new__ delegates bucket validation:
 bucket = m.group(1)
-_validate_gcs_bucket_name(bucket)  # reuse GcsBucketName's validator
+_validate_gcs_bucket_name(bucket)  # reuses GcsBucketName's validator
 ```
 
 ## CloudStorageUri Base Class

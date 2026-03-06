@@ -32,10 +32,7 @@ The most common contribution is adding a validated type. Follow these steps:
 - Add tests in the mirror location under `tests/` — one test file per source file
 - Run `make check` to verify everything passes
 
-Two type patterns exist in the codebase:
-
-- **Pattern A** (`str` subclass with `__new__`): for types with parsed properties (e.g. `S3Uri` with `.bucket` and `.key`)
-- **Pattern B** (`Annotated[str, AfterValidator(...)]`): for simple validated strings without parsed properties
+Four type patterns exist in the codebase (A/B/C/D). See [ARCHITECTURE.md](ARCHITECTURE.md) for full details, examples, and conventions for each pattern.
 
 ## PR Guidelines
 

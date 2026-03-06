@@ -52,7 +52,7 @@ uri.name    # "input.parquet"
 uri.suffix  # ".parquet"
 ```
 
-Other examples: `Arn`, `IamRoleArn`, `DockerImageRef`, `Jwt`, `MimeType`, `Host`, `Urn`,
+Other examples: `Arn`, `IamRoleArn`, `DockerImageRef`, `Jwt`, `MimeType`, `Host`, `Fqdn`, `Urn`,
 `GcsUri`, `BlobStorageUri`, `ResourceId`, `GitSshUrl`, `GitHttpsUrl`.
 
 ### Pattern B: Annotated Type (Simple Validation)
@@ -70,7 +70,7 @@ instance_id: Ec2InstanceId = "not-an-instance-id"
 ```
 
 Other examples: `AccountId`, `S3BucketName`, `SecurityGroupId`, `VpcId`,
-`K8sResourceName`, `Fqdn`, `Sha256Hex`, `SqlIdentifier`.
+`K8sResourceName`, `K8sDnsLabel`, `Sha256Hex`, `SqlIdentifier`.
 
 ### Pattern C: StrEnum (Fixed Value Sets)
 
