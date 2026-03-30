@@ -1315,14 +1315,14 @@ wheels = [
 
 [[package]]
 name = "termynal"
-version = "0.13.1"
+version = "0.14.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "markdown" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/6c/a6/099ed030e3e534ec91aec84dfe2cb11cea6ec8dcbec454fe569cdbbb4888/termynal-0.13.1.tar.gz", hash = "sha256:c7abecfdbda3ccdeee2723049a70f0e2e7f63e1973bb9b8f0b3fe6c1bfb391cd", size = 174253, upload-time = "2025-09-01T13:03:35.02Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/26/8c/ea13868e6008ed964837db011648e3e7766e0ecfa1b42d7b9a4cf0c228e2/termynal-0.14.0.tar.gz", hash = "sha256:2918a1a6cf468497fbb3a72dc3726743988829eef1136d0c78a81df70ec869f6", size = 178022, upload-time = "2026-03-16T16:56:21.539Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/80/72/6949a512f16653cecebb737b8512ee76ca078d8e0e4e948d7322b528fb4d/termynal-0.13.1-py3-none-any.whl", hash = "sha256:7a1605a4d4ed38bf851bf25f842aafa52ef29786d52762aecee59622ed030592", size = 10628, upload-time = "2025-09-01T13:03:34.236Z" },
+    { url = "https://files.pythonhosted.org/packages/c3/8f/c089f7c9f9fc1da25e6271386e5df84e1f6e0b04d2f0b408939b51b2876f/termynal-0.14.0-py3-none-any.whl", hash = "sha256:b5147545e29256d35148251f5c2d3d23dec1d2fb0b4ba464ff330a7de8b56fc6", size = 11754, upload-time = "2026-03-16T16:56:22.76Z" },
 ]
 
 [[package]]
