@@ -5,6 +5,7 @@ site_description: "The missing types for Pydantic — cloud, DevOps, web, data, 
 site_url: https://oborchers.github.io/pydantypes/
 repo_url: https://github.com/oborchers/pydantypes
 repo_name: oborchers/pydantypes
+copyright: Built by <a href="https://www.drborchers.com">Dr. Oliver Borchers</a>
 edit_uri: edit/main/docs/
 
 theme:

@@ -209,6 +209,10 @@ make test-cov     # tests with coverage report
 
 pydantypes is an independent, community-maintained package and is not affiliated with or endorsed by Pydantic Services Inc.
 
+## Author
+
+Built by [Dr. Oliver Borchers](https://www.drborchers.com), Executive AI and Automation Partner and Head of AI Engineering at IU Group.
+
 ## License
 
 MIT
