@@ -9,7 +9,7 @@ description = "The missing types for Pydantic — cloud, DevOps, web, and data e
 readme = "README.md"
 license-expression = "MIT"
 requires-python = ">=3.10"
-authors = [{ name = "Oliver Borchers" }]
+authors = [{ name = "Oliver Borchers", email = "26734737+oborchers@users.noreply.github.com" }]
 keywords = ["pydantic", "types", "validation", "aws", "azure", "gcp", "cloud", "devops", "type-safety"]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -29,6 +29,7 @@ dependencies = [
 ]
 
 [project.urls]
+Homepage = "https://www.drborchers.com"
 Documentation = "https://oborchers.github.io/pydantypes/"
 Repository = "https://github.com/oborchers/pydantypes"
 Issues = "https://github.com/oborchers/pydantypes/issues"
